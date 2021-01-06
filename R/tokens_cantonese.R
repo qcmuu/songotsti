@@ -17,11 +17,13 @@ tokenize_jieba <- function(texts){
 #' }
 tokens_cantonese <- function(x){
   if(quanteda::is.corpus(x)){  # if corpus
-    raw_texts <- quanteda::texts(corpus)
-    tokenised_texts <- tokenize_jieba(raw_texts)
-    return(quanteda::as.tokens(tokenised_texts))
+    # raw_texts <- quanteda::texts(corpus)
+    # tokenised_texts <- tokenize_jieba(raw_texts)
+    #return(quanteda::as.tokens(tokenised_texts)) 
+    return(tokenize_jieba(x))
   } else if(is.character(x) & length(x) == 1){ # if string
-    return(unlist(tokenize_jieba(x)))
+    #return(unlist(tokenize_jieba(x)))
+    return(tokenize_jieba(x))
   } else if(is.character(x)){ # if character vector
     return(tokenize_jieba(x))
   } else {
